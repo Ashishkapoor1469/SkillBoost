@@ -29,9 +29,13 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <div className="flex justify-between fixed items-center h-12 border w-full px-5 py-7 bg-white shadow-md">
-      <div className="left flex gap-1 h-full items-center font-extrabold">
-        <PiBookOpenThin className="text-3xl" /> EduPro
+    <div className={`flex justify-between fixed items-center h-12 w-full px-5 py-7`}>
+      <div className="left flex gap-1 h-full items-center font-extrabold"><PiBookOpenThin className="text-3xl"/> EduPro</div>
+      <div className="right flex gap-5 h-full items-center text-black text-sm font-semibold">
+        {routes.map((route, index) => {
+          return <Link href={route.Link} key={index}>{route.route}</Link>;
+        })}
+    <Button>Sign Up</Button>
       </div>
 
       <nav className="flex gap-x-4 justify-center items-center">
