@@ -12,7 +12,7 @@ const navbar: React.FC = () => {
   ]
 const backgroundcolor ="border"
   return (
-<div className={`flex justify-between items-center h-12 ${backgroundcolor} w-full px-5 py-7`}>
+<div className={`flex fixed top-0 justify-between items-center h-12 ${backgroundcolor} w-full px-5 py-7`}>
       <div className="left flex gap-1 h-full items-center font-bold"><PiBookOpenThin className="text-3xl"/> EduPro</div>
       <div className="right flex gap-5 h-full items-center text-black text-sm font-semibold">
         {routes.map((route, index) => {
