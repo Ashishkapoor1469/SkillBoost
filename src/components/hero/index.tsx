@@ -17,7 +17,7 @@ const Hero:React.FC = () => {
         </motion.h1>
         <motion.p initial={{x:-200,opacity:0}} animate={{x:0,opacity:100}} transition={{duration:0.8}} className="font-light py-2">
           Learn from industry experts and tranform your skills our
-          comprehernsin=ve online courses
+          comprehernsinve online courses
         </motion.p>
         <motion.div initial={{y:200,opacity:0}} animate={{y:0,opacity:100}} transition={{duration:0.8}} className="flex flex-row gap-3 pt-4 py-2">
           <Button variant="default">Browse Courses</Button>
