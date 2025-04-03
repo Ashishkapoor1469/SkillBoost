@@ -1,18 +1,24 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { PiBookOpenThin } from "react-icons/pi";
 import { CiMenuFries } from "react-icons/ci";
 import { motion, AnimatePresence } from "framer-motion";
+import { RiCloseLargeLine } from "react-icons/ri";
 import Link from "next/link";
 
 interface RouteType {
   route: string;
-  Link: string;
+  link: string; // Fixed: Changed "Link" to "link"
 }
 
-type Routes = RouteType[];
+const routes: RouteType[] = [
+  { route: "Courses", link: "/" },
+  { route: "Pricing", link: "/courses" },
+  { route: "About", link: "/pricing" },
+  { route: "Login", link: "/login" },
+];
 
 const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -21,58 +27,32 @@ const Navbar: React.FC = () => {
     setIsVisible((prev) => !prev);
   };
 
-  const routes: Routes = [
-    { route: "Courses", Link: "/" },
-    { route: "Pricing", Link: "/courses" },
-    { route: "About", Link: "/pricing" },
-    { route: "Login", Link: "/login" },
-  ];
-
   return (
-    <div className={`flex justify-between fixed items-center h-12 w-full px-5 py-7`}>
-      <div className="left flex gap-1 h-full items-center font-extrabold"><PiBookOpenThin className="text-3xl"/> EduPro</div>
-      <div className="right flex gap-5 h-full items-center text-black text-sm font-semibold">
-        {routes.map((route, index) => {
-          return <Link href={route.Link} key={index}>{route.route}</Link>;
-        })}
-    <Button>Sign Up</Button>
+    <div className="flex justify-between fixed items-center h-16 w-full md:px-12 lg:px-12 xl:px-12 px-6 py-7 bg-white/30 backdrop-blur-md z-[999]">
+      <div className="left flex gap-1 h-full items-center font-extrabold scale-[1.3]">
+        <PiBookOpenThin className="text-3xl" /> SkillBoost
       </div>
 
       <nav className="flex gap-x-4 justify-center items-center">
-        {/* Desktop Links with Underline Animation */}
         <ul className="hidden sm:flex gap-x-6">
           {routes.map((route, index) => (
-            <li
-              key={index}
-              className="text-md relative"
-              
-            >
-              <Link href={route.Link}>{route.route}</Link>
+            <li key={index} className="text-md relative">
+              <Link href={route.link}>{route.route}</Link>
               <motion.div
                 className="absolute left-0 bottom-0 h-[2px] bg-blue-600 w-full"
                 initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                exit={{ scaleX: 0 }}
-                variants={{
-                  hover: { scaleX: 1, transition: { duration: 0.3 } },
-                  initial: { scaleX: 0 },
-                }}
+                animate={{ scaleX: 1, transition: { duration: 0.3 } }}
               />
             </li>
           ))}
         </ul>
 
         {/* Buttons */}
-        <div className="flex">
+        <div className="">
           <Button className="hidden sm:flex">Login</Button>
-          <motion.button
-            className="sm:hidden p-2 rounded-full"
-            onClick={handleVisible}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
+          <Button className="sm:hidden p-2" variant="outline" onClick={handleVisible}>
             <CiMenuFries />
-          </motion.button>
+          </Button>
         </div>
       </nav>
 
@@ -81,49 +61,42 @@ const Navbar: React.FC = () => {
         {isVisible && (
           <motion.div
             key="mobile-menu"
-            className="fixed inset-0 bg-black/50 z-50 sm:hidden"
+            className="inset-0 h-screen z-50 sm:hidden fixed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             onClick={() => setIsVisible(false)}
           >
             <motion.div
-              className="fixed inset-0 bg-white w-full h-full flex flex-col items-center justify-center gap-6"
-              initial={{ opacity: 0, y: "-100%" }}
-              animate={{ opacity: 1, y: "0%" }}
-              exit={{ opacity: 0, y: "-100%" }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed inset-0 bg-white backdrop-blur-lg w-full h-screen flex flex-col items-center justify-center gap-6 shadow-xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Button
-                className="absolute top-5 right-5 text-3xl"
-                onClick={() => setIsVisible(false)}
-              >
-                ✕
-              </Button>
-
               <ul className="flex flex-col items-center gap-4 text-lg font-semibold">
                 {routes.map((route, index) => (
-                  <li
-                    key={index}
-                  >
-                    <Link href={route.Link} onClick={() => setIsVisible(false)}>
-                      {route.route}
+                  <li key={index}>
+                    <Link href={route.link} onClick={() => setIsVisible(false)}>
+                      {route.route === "Login" ? <Button className="mt-4">{route.route}</Button> : route.route}
                     </Link>
-                    <motion.div
-                      className="absolute left-0 bottom-0 h-[2px] bg-blue-600 w-full"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      exit={{ scaleX: 0 }}
-                      variants={{
-                        hover: { scaleX: 1, transition: { duration: 0.3 } },
-                        initial: { scaleX: 0 },
-                      }}
-                    />
                   </li>
                 ))}
               </ul>
+
+              {/* Close Button */}
+              <div className="absolute bottom-[4rem]">
+                <motion.div
+                  initial={{ rotateX: 35, opacity: 1 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                  exit={{ rotateX: 35, opacity: 0 }} // Fixed exit opacity
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <RiCloseLargeLine size={32} onClick={() => setIsVisible(false)} />
+                </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         )}
