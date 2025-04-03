@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-<div className={`flex fixed top-0 backdrop-blur-2xl justify-between items-center h-12 border w-full px-5 py-7`}>
+<div className={`flex fixed justify-between items-center h-12 border w-full px-5 py-7`}>
       <div className="left flex gap-1 h-full items-center font-bold"><PiBookOpenThin className="text-3xl"/> EduPro</div>
       <nav className="flex gap-x-4 justify-center items-center">
         {/* Desktop Links with Underline Animation */}
