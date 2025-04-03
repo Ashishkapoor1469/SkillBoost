@@ -18,7 +18,6 @@ const Courses = () => {
         <section>
           <Cards />
         </section>
-
       </motion.h1>
     </main>
   );

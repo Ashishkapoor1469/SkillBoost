@@ -7,6 +7,7 @@ import { CiMenuFries } from "react-icons/ci";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiCloseLargeLine } from "react-icons/ri";
 import Link from "next/link";
+import Button1 from "../buttons/button1";
 
 interface RouteType {
   route: string;
@@ -46,11 +47,11 @@ const Navbar: React.FC = () => {
             </li>
           ))}
         </ul>
-
+        <li className="list-none"><Button1/></li>
         {/* Buttons */}
         <div className="">
-          <Button className="hidden sm:flex">Login</Button>
-          <Button className="sm:hidden p-2" variant="outline" onClick={handleVisible}>
+          <button className="hidden sm:flex btn">Login</button>
+          <Button className="sm:hidden p-2 btn" variant="outline" onClick={handleVisible}>
             <CiMenuFries />
           </Button>
         </div>
@@ -85,7 +86,7 @@ const Navbar: React.FC = () => {
                   </li>
                 ))}
               </ul>
-
+              
               {/* Close Button */}
               <div className="absolute bottom-[4rem]">
                 <motion.div

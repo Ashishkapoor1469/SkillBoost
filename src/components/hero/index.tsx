@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 px-5 md:px-20">
 
           <motion.div
             className="w-full md:w-1/2 space-y-6 text-center md:text-left"
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
             <motion.p
               {...fadeInLeft}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg text-gray-500 max-w-xl mx-auto md:mx-0"
+              className="text-lg text-gray-500 max-w-xl mx-auto md:mx-0 nunito-n"
             >
               Learn from industry experts and transform your skills with our comprehensive online{" "}
               <span className="text-green-500 font-medium">courses</span>.
