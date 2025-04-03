@@ -56,24 +56,24 @@ const Hero: React.FC = () => {
             animate="animate"
             viewport={{ once: true }}
           >
-            <motion.h1 {...fadeInLeft} className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <motion.h1 {...fadeInLeft} className="text-4xl  min-[1022px]:text-5xl lg:text-6xl font-extrabold leading-tight">
               Unlock Your Potential with Expert-Led Courses
             </motion.h1>
 
             <motion.p
               {...fadeInLeft}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg text-gray-500 max-w-xl mx-auto md:mx-0 nunito-n"
+              className="text-lg text-gray-500 max-w-xl mx-auto md:mx-0"
             >
               Learn from industry experts and transform your skills with our comprehensive online{" "}
               <span className="text-green-500 font-medium">courses</span>.
             </motion.p>
 
             <motion.div {...fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button size="lg" className="font-medium">
+              <Button size="lg" className="font-medium cursor-pointer">
                 Browse Courses
               </Button>
-              <Button size="lg" variant="outline" className="font-medium">
+              <Button size="lg" variant="outline" className="font-medium hover:bg-neutral hover:text-white duration-300 cursor-pointer">
                 View Pricing
               </Button>
             </motion.div>

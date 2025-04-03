@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
         <li className="list-none"><Button1/></li>
         {/* Buttons */}
         <div className="">
-          <button className="hidden sm:flex btn">Login</button>
+          <button className="hidden sm:flex btn bg-black hover:bg-neutral-700 text-white">Login</button>
           <Button className="sm:hidden p-2 btn" variant="outline" onClick={handleVisible}>
             <CiMenuFries />
           </Button>
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
             onClick={() => setIsVisible(false)}
           >
             <motion.div
-              className="fixed inset-0 bg-white backdrop-blur-lg w-full h-screen flex flex-col items-center justify-center gap-6 shadow-xl"
+              className="fixed inset-0 bg-neutral  backdrop-blur-lg w-full h-screen flex flex-col items-center justify-center gap-6 shadow-xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
