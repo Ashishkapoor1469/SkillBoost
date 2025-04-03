@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 overflow-hidden scroll-none">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -47,10 +47,9 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Main content container */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-          {/* Left content - Text and CTAs */}
+
           <motion.div
             className="w-full md:w-1/2 space-y-6 text-center md:text-left"
             initial="initial"
@@ -95,7 +94,6 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right content - Image */}
           <motion.div className="w-full md:w-1/2" {...fadeInRight}>
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <Image src="/Bg1.png" fill alt="Online learning illustration" className="object-contain" priority />
